@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
  
     void Update()
     {
+        if (GameManager.Instance.currentState != GameState.Playing) return;
+
         if (playerInput == null) return;
         
         moveInput = playerInput.actions["Move"].ReadValue<Vector2>();
@@ -31,7 +33,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
-            TakeDamage(0.1f);
+            TakeDamage(1f);
         }
     }
 
